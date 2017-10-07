@@ -1,0 +1,5 @@
+cp ../.gitconfig . 
+cp ../.tmux.conf .
+cp ../.bashrc .
+
+git add .bashrc .git .tmux.conf 

@@ -1,0 +1,8 @@
+[user]
+	email = yashin-alexander@rambler.ru
+	name = yashin-alexander
+[alias]
+    lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[core]
+	editor = vim
+
