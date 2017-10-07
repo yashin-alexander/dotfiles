@@ -116,5 +116,9 @@ if ! shopt -oq posix; then
 fi
 
 alias c='clear'
+alias p='python3'
+alias p2='python2.7'
+
 alias ls='ls -latF --color=auto'
 alias tmux='tmux new-session \; split-window -v -p 30 \; select-pane -t 0 \; split-window -h \; select-pane -t 0 \;'
+cd Documents
