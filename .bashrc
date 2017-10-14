@@ -124,4 +124,7 @@ alias p2='python2.7'
 alias ret='. ~/.bashrc'
 
 alias ls='ls -ltF --color=auto'
-alias tmux='tmux new-session \; split-window -v -p 30 \; select-pane -t 0 \; split-window -h \; select-pane -t 0 \;'
+alias tmux='tmux new-session \; split-window -h \; select-pane -t 1 \; split-window -v \; select-pane -t 0 \;'
+
+alias osql='~/programs/sqldeveloper/opt/sqldeveloper/sqldeveloper.sh'
+alias ise='. ~/programs/14.7/ISE_DS/settings64.sh; ise'
