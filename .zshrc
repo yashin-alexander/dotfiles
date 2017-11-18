@@ -104,3 +104,5 @@ alias se='history | grep $1'
 
 alias osql='~/programs/sqldeveloper/opt/sqldeveloper/sqldeveloper.sh'
 alias ise='. ~/programs/14.7/ISE_DS/settings64.sh; ise'
+
+alias anylogic='cd ~/.wine/drive_c/Program\ Files/AnyLogic\ 8\ Personal\ Learning\ Edition; wine AnyLogic.exe'
