@@ -2,5 +2,6 @@ cp ../.gitconfig .
 cp ../.tmux.conf .
 cp ../.bashrc .
 cp ../.zshrc .
+cp ../.vimrc . 
 
-git add .zshrc .bashrc .git .tmux.conf 
+git add updatefiles .zshrc .bashrc .git .tmux.conf .vimrc
