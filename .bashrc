@@ -128,3 +128,4 @@ alias tmux='tmux new-session \; split-window -h \; select-pane -t 1 \; split-win
 
 alias osql='~/programs/sqldeveloper/opt/sqldeveloper/sqldeveloper.sh'
 alias ise='. ~/programs/14.7/ISE_DS/settings64.sh; ise'
+export LD_LIBRARY_PATH=/usr/lib/oracle/12.2/client64/lib:$LD_LIBRARY_PATH

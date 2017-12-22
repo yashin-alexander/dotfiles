@@ -102,7 +102,21 @@ alias tmux='tmux new-session \; split-window -h \; select-pane -t 1 \; split-win
 
 alias se='history | grep $1'
 
+alias st1="watch sudo ifconfig enp0s20u1c2 192.168.2.2"
+alias st6="watch sudo ifconfig enp0s20u6c2 192.168.2.2"
+
 alias osql='~/programs/sqldeveloper/opt/sqldeveloper/sqldeveloper.sh'
 alias ise='. ~/programs/14.7/ISE_DS/settings64.sh; ise'
 
 alias anylogic='cd ~/.wine/drive_c/Program\ Files/AnyLogic\ 8\ Personal\ Learning\ Edition; wine AnyLogic.exe'
+
+
+# uncomment that line to use cx_Oracle
+#export LD_LIBRARY_PATH=/usr/lib/oracle/12.2/client64/lib:$LD_LIBRARY_PATH
+
+export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
+export ORACLE_SID=XE
+export NLS_LANG=`$ORACLE_HOME/bin/nls_lang.sh`
+export ORACLE_BASE=/u01/app/oracle
+export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
+export PATH=$ORACLE_HOME/bin:$PATH
