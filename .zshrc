@@ -100,7 +100,7 @@ alias la='ls -A'
 
 alias tmux='tmux new-session \; split-window -h \; select-pane -t 1 \; split-window -v \; select-pane -t 0 \;'
 
-alias se='history | grep $1'
+alias se='history | grep -v se | grep $1' 
 
 alias st1="watch sudo ifconfig enp0s20u1c2 192.168.2.2"
 alias st6="watch sudo ifconfig enp0s20u6c2 192.168.2.2"
