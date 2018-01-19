@@ -105,12 +105,8 @@ alias se='history | grep -v se | grep $1'
 alias st1="watch sudo ifconfig enp0s20u1c2 192.168.2.2"
 alias st6="watch sudo ifconfig enp0s20u6c2 192.168.2.2"
 
-alias osql='~/programs/sqldeveloper/opt/sqldeveloper/sqldeveloper.sh'
 alias ise='. ~/programs/14.7/ISE_DS/settings64.sh; ise'
 
-alias anylogic='cd ~/.wine/drive_c/Program\ Files/AnyLogic\ 8\ Personal\ Learning\ Edition; wine AnyLogic.exe'
-
-alias mipsc='/home/alexander/programs/Codescape.GNU.Tools.Package.2016.05-06.for.MIPS.MTI.Bare.Metal.CentOS-5.x86_64/mips-mti-elf/2016.05-06/bin/mips-mti-elf-gcc'
 # uncomment that line to use cx_Oracle
 #export LD_LIBRARY_PATH=/usr/lib/oracle/12.2/client64/lib:$LD_LIBRARY_PATH
 
