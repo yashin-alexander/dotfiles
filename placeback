@@ -1,0 +1,6 @@
+#!/bin/bash
+read -p "You are going to overwrite existing dotfiles, are you sure? y/n: " answer
+case $answer in
+y) cp .* ../; echo "Regular files overwritten" ;;
+n) echo "Ok, bye" ;;
+esac
