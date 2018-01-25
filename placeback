@@ -1,6 +1,12 @@
 #!/bin/bash
 read -p "You are going to overwrite existing dotfiles, are you sure? y/n: " answer
 case $answer in
-y) cp .* ../; echo "Regular files overwritten" ;;
+y)  cp tmux/.t*  ~/ 
+    cp vim/.v* ~/
+    cp git/.g* ~/
+    cp bash/.b* ~/
+    cp zsh/.z* ~/
+    cp ssh/config ~/.ssh/ 
+    echo "Regular files overwritten" ;;
 n) echo "Ok, bye" ;;
 esac
