@@ -98,7 +98,16 @@ alias ls='ls -ltF --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 
-alias tmux='tmux new-session \; split-window -h \; select-pane -t 1 \; split-window -v \; select-pane -t 0 \;'
+alias tmux='tmux new-session \; \
+    split-window -h \; \
+    select-pane -t 1 \; \
+    split-window -v \; \
+    select-pane -t 0 \; \
+    split-window -v \; \
+    select-pane -t 2 \; \
+    resize-pane -D 17 \; \
+    select-pane -t 0 \; \
+    resize-pane -D 17 \;' 
 
 alias se='history | grep -v se | grep $1' 
 
