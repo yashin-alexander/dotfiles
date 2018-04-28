@@ -117,8 +117,10 @@ alias tmux='tmux new-session \; \
 alias se='history | grep -v se | grep $1' 
 
 alias st1="watch sudo ifconfig enp0s20u1c2 192.168.2.2"
+alias st2="watch sudo ifconfig enp0s29u1u2c2 192.168.2.2"
 alias st6="watch sudo ifconfig enp0s20u6c2 192.168.2.2"
-alias suka="sudo"
+
+alias python='python3'
 
 # uncomment that line to use cx_Oracle
 #export LD_LIBRARY_PATH=/usr/lib/oracle/12.2/client64/lib:$LD_LIBRARY_PATH
