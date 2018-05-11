@@ -85,6 +85,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.git-completion.zsh 2> /dev/null
+export PYTHONSTARTUP=~/.pythonrc
 
 HISTSIZE=999999
 HISTFILESIZE=999999
