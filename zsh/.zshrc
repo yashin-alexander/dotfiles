@@ -101,12 +101,15 @@ alias ls='ls -ltF --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 
-alias tmux2='tmux new-session -c "$PWD"\; \
+alias tmuxh='tmux new-session -c "$PWD"\; \
+    split-window -v \; \
+    select-pane -t 0 \;'
+
+alias tmuxv='tmux new-session -c "$PWD"\; \
     split-window -h \; \
     select-pane -t 0 \;'
 
-
-alias tmux='tmux new-session -c "$PWD"\; \
+alias tmux4='tmux new-session -c "$PWD"\; \
     split-window -h \; \
     select-pane -t 1 \; \
     split-window -v \; \
