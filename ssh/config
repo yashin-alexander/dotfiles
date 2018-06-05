@@ -1,4 +1,8 @@
 Host hl
-HostName helios.cs.ifmo.ru
-Port 2222
-User s207687
+    HostName helios.cs.ifmo.ru
+    Port 2222
+    User s207687
+
+Host 192.168.2.15
+   StrictHostKeyChecking no
+   UserKnownHostsFile=/dev/null
