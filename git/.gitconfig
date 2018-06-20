@@ -9,6 +9,6 @@
 	st = status 
 [core]
 	editor = vim
-
+    excludesfile = /home/alexander/.gitignore
 [push]
 	default = matching
