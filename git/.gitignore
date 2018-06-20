@@ -1,0 +1,40 @@
+# Test
+#test.*
+.hg
+.svn
+.cache
+CVS
+*.swp
+*~
+*.iml
+
+
+# python
+*.py[co]
+
+# Packages
+*.egg
+*.egg-info
+# dist
+eggs
+sdist
+develop-eggs
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+demo.py
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+# pyenv
+.python-version
+
+# Idea
+.idea/
+.vagrant/
+venv/
+
+.pytest_cache/
