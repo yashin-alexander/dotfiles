@@ -20,7 +20,7 @@ ZSH_THEME="alanpeabody"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=14
+export UPDATE_ZSH_DAYS=7
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -103,7 +103,8 @@ alias la='ls -A'
 
 alias tmuxh='tmux new-session -c "$PWD"\; \
     split-window -v \; \
-    select-pane -t 0 \;'
+    select-pane -t 0 \; \
+    resize-pane -D 17 \;' 
 
 alias tmuxv='tmux new-session -c "$PWD"\; \
     split-window -h \; \
