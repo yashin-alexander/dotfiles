@@ -8,6 +8,7 @@ y)  cp tmux/.t*  ~/
     cp zsh/.z* ~/
     cp ssh/config ~/.ssh/ 
     cp python/.p* ~/
+    cp python/.flake8 ~/.config/
     echo "Regular files overwritten" ;;
 n) echo "Ok, bye" ;;
 esac

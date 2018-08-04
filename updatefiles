@@ -8,5 +8,6 @@ cp ~/.vimrc vim/
 cp ~/.ssh/config ssh/
 cp ~/.pythonrc python/
 cp ~/.pylintrc python/
+cp ~/.config/flake8 python/
 
 git add *
