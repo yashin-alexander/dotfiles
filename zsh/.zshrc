@@ -110,6 +110,15 @@ alias tmuxv='tmux new-session -c "$PWD"\; \
     split-window -h \; \
     select-pane -t 0 \;'
 
+alias tmuxf='tmux new-session -c "$PWD"\; \
+    split-window -h \; \
+    select-pane -t 1 \; \
+    split-window -v \; \
+    select-pane -t 0 \; \
+    split-window -v \; \
+    select-pane -t 2 \; \
+    select-pane -t 0 \;'
+
 alias tmux4='tmux new-session -c "$PWD"\; \
     split-window -h \; \
     select-pane -t 1 \; \
