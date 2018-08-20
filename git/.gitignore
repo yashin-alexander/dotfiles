@@ -11,6 +11,7 @@ CVS
 
 # python
 *.py[co]
+.pytest_cache/
 
 # Packages
 *.egg
@@ -37,4 +38,6 @@ demo.py
 .vagrant/
 venv/
 
-.pytest_cache/
+# VSCode
+.vscode
+
