@@ -2,7 +2,6 @@ cp ~/.gitconfig git/
 cp ~/.gitignore git/
 cp ~/.git-completion.zsh git/
 cp ~/.tmux.conf tmux/
-cp ~/.bashrc bash/
 cp ~/.zshrc zsh/
 cp ~/.vimrc vim/ 
 cp ~/.ssh/config ssh/
