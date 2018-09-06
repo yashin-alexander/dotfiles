@@ -8,5 +8,6 @@ cp ~/.ssh/config ssh/
 cp ~/.pythonrc python/
 cp ~/.pylintrc python/
 cp ~/.config/flake8 python/
+cp ~/.dosbox.conf temporary
 
 git add *
