@@ -147,3 +147,6 @@ alias python='python3'
 #export ORACLE_BASE=/u01/app/oracle
 #export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
 #export PATH=$ORACLE_HOME/bin:$PATH
+
+# dosbox startup
+alias dosbox='dosbox -conf /home/alexander/.dosbox.conf'
