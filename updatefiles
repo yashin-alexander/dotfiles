@@ -3,6 +3,7 @@ cp ~/.gitignore git/
 cp ~/.git-completion.zsh git/
 cp ~/.tmux.conf tmux/
 cp ~/.zshrc zsh/
+cp ~/.oh-my-zsh/themes/alanpeabody-modified.zsh-theme zsh/
 cp ~/.vimrc vim/ 
 cp ~/.ssh/config ssh/
 cp ~/.pythonrc python/

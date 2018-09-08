@@ -4,7 +4,8 @@ case $answer in
 y)  cp tmux/.t*  ~/ 
     cp vim/.v* ~/
     cp git/.g* ~/
-    cp zsh/.z* ~/
+    cp zsh/.zshrc ~/
+    cp zsh/alanpeabody-modified.zsh-theme  ~/.oh-my-zsh/themes/alanpeabody-modified.zsh-theme 
     cp ssh/config ~/.ssh/ 
     cp python/.p* ~/
     cp python/.flake8 ~/.config/
