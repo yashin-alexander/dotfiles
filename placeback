@@ -1,7 +1,15 @@
 #!/bin/bash
-read -p "You are going to overwrite existing dotfiles, are you sure? y/n: " answer
-case $answer in
-y)  cp tmux/.t*  ~/ 
+
+function install_plugins {
+  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+  sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+}
+
+function copy_dotfiles {
+  read -p "You are going to overwrite existing dotfiles, are you sure? y/n: " answer
+  case $answer in
+  y)  
+    cp tmux/.t*  ~/ 
     cp vim/.v* ~/
     cp git/.g* ~/
     cp zsh/.zshrc ~/
@@ -11,5 +19,23 @@ y)  cp tmux/.t*  ~/
     cp python/.flake8 ~/.config/
     cp temporary/.d* ~/
     echo "Regular files overwritten" ;;
-n) echo "Ok, bye" ;;
-esac
+  n) echo "Ok, bye" ;;
+  esac
+}
+
+
+while getopts "id" flag; do
+  case $flag in
+    i)
+      install_plugins
+      yes | copy_dotfiles
+      ;;
+    d)
+      copy_dotfiles
+      ;;
+  esac
+done
+
+if [ $OPTIND -eq 1 ]; then 
+  copy_dotfiles 
+fi
