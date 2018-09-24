@@ -155,4 +155,4 @@ alias gco='git checkout'
 #export PATH=$ORACLE_HOME/bin:$PATH
 
 # dosbox startup
-alias dosbox='dosbox -conf /home/alexander/.dosbox.conf'
+alias dosbox='dosbox -conf /home/`whoami`/.dosbox.conf'
