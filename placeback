@@ -16,8 +16,9 @@ function copy_dotfiles {
     cp zsh/alanpeabody-modified.zsh-theme  ~/.oh-my-zsh/themes/alanpeabody-modified.zsh-theme 
     cp ssh/config ~/.ssh/ 
     cp python/.p* ~/
-    cp python/.flake8 ~/.config/
+    cp python/flake8 ~/.config/
     cp temporary/.d* ~/
+    cp alacritty/.a* ~/.config/alacritty/
     echo "Regular files overwritten" ;;
   n) echo "Ok, bye" ;;
   esac
