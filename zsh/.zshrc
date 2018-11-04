@@ -142,7 +142,6 @@ alias st2="watch sudo ifconfig enp0s29u1u2c2 192.168.2.2"
 alias st6="watch sudo ifconfig enp0s20u6c2 192.168.2.2"
 
 alias python='python3'
-alias gco='git checkout'
 
 # uncomment that line to use cx_Oracle
 #export LD_LIBRARY_PATH=/usr/lib/oracle/12.2/client64/lib:$LD_LIBRARY_PATH
@@ -155,4 +154,4 @@ alias gco='git checkout'
 #export PATH=$ORACLE_HOME/bin:$PATH
 
 # dosbox startup
-alias dosbox='dosbox -conf /home/`whoami`/.dosbox.conf'
+alias dosbox='dosbox -conf /home/alexander/.dosbox.conf'

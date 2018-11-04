@@ -10,5 +10,6 @@ cp ~/.pythonrc python/
 cp ~/.pylintrc python/
 cp ~/.config/flake8 python/
 cp ~/.dosbox.conf temporary
+cp ~/.config/alacritty/alacritty.yml alacritty
 
 git add *
