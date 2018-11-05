@@ -30,6 +30,7 @@ while getopts "id" flag; do
     i)
       install_plugins
       yes | copy_dotfiles
+      chsh -s /usr/bin/zsh alexander
       ;;
     d)
       copy_dotfiles
