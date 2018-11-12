@@ -51,7 +51,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git, zsh-autosuggestions)
+plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -89,7 +89,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=2'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source ~/.git-completion.zsh 2> /dev/null
 export PYTHONSTARTUP=~/.pythonrc
 
 HISTSIZE=999999
@@ -109,7 +108,7 @@ alias la='ls -A'
 alias tmuxh='tmux new-session -c "$PWD"\; \
     split-window -v \; \
     select-pane -t 0 \; \
-    resize-pane -D 17 \;' 
+    resize-pane -D 17 \;'
 
 alias tmuxv='tmux new-session -c "$PWD"\; \
     split-window -h \; \
@@ -133,9 +132,9 @@ alias tmux4='tmux new-session -c "$PWD"\; \
     select-pane -t 2 \; \
     resize-pane -D 17 \; \
     select-pane -t 0 \; \
-    resize-pane -D 17 \;' 
+    resize-pane -D 17 \;'
 
-alias se='history | grep -v se | grep $1' 
+alias se='history | grep -v se | grep $1'
 
 alias st1="watch sudo ifconfig enp0s20u1c2 192.168.2.2"
 alias st2="watch sudo ifconfig enp0s29u1u2c2 192.168.2.2"
