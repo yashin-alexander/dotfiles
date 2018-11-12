@@ -1,15 +1,14 @@
 cp ~/.gitconfig git/
 cp ~/.gitignore git/
-cp ~/.git-completion.zsh git/
 cp ~/.tmux.conf tmux/
 cp ~/.zshrc zsh/
-cp ~/.oh-my-zsh/themes/alanpeabody-modified.zsh-theme zsh/
-cp ~/.vimrc vim/ 
-cp ~/.ssh/config ssh/
+cp ~/.oh-my-zsh/themes/alanpeabody-modified.zsh-theme zsh/.oh-my-zsh/themes/
+cp ~/.vimrc vim/
+cp ~/.ssh/config ssh/.ssh/
 cp ~/.pythonrc python/
 cp ~/.pylintrc python/
-cp ~/.config/flake8 python/
-cp ~/.dosbox.conf temporary
-cp ~/.config/alacritty/alacritty.yml alacritty
+cp ~/.config/flake8 python/.config/
+cp ~/.dosbox.conf additional
+cp ~/.config/alacritty/alacritty.yml additional/.config/.alacritty.yml
 
 git add *

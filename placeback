@@ -1,43 +1,61 @@
-#!/bin/bash
+#!/bin/bash -e
+
+DOTFILES_DIRS=(python tmux git vim zsh ssh)
+ADDITIONAL_FILES_DIR=(additional)
+LIGHT_GREEN="\033[1;32m"
+LIGHT_RED="\033[1;31m"
+NO_COLOR="\033[0m"
 
 function install_plugins {
   git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-  sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+  bash -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+  echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} plugins intalled"
 }
 
-function copy_dotfiles {
+function install_dotfiles {
   read -p "You are going to overwrite existing dotfiles, are you sure? y/n: " answer
   case $answer in
-  y)  
-    cp tmux/.t*  ~/ 
-    cp vim/.v* ~/
-    cp git/.g* ~/
-    cp zsh/.zshrc ~/
-    cp zsh/alanpeabody-modified.zsh-theme  ~/.oh-my-zsh/themes/alanpeabody-modified.zsh-theme 
-    cp ssh/config ~/.ssh/ 
-    cp python/.p* ~/
-    cp python/flake8 ~/.config/
-    cp temporary/.d* ~/
-    cp alacritty/.a* ~/.config/alacritty/
-    echo "Regular files overwritten" ;;
-  n) echo "Ok, bye" ;;
+  y)
+    for directory in ${DOTFILES_DIRS[*]}; do
+      cp -r ${directory}/.[^.]* ~/
+      echo "Dotfiles from ${directory} are copied "
+    done
+    echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} Regular files overwritten"
+  ;;
+  n) ;;
+  esac
+  read -p "Do you want to overwrite additional dotfiles? y/n: " answer
+  case $answer in
+  y)
+    cp -r ${ADDITIONAL_FILES_DIR}/.[^.]* ~/
+    echo "Dotfiles from ${ADDITIONAL_FILES_DIR} are copied "
+    echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} Additional files overwritten"
+  ;;
+  n) ;;
   esac
 }
 
+if [ -z $* ]
+  then
+    echo -e "${LIGHT_RED}[ERROR]${NO_COLOR} No options found!"
+    exit 1
+fi
 
 while getopts "id" flag; do
   case $flag in
     i)
       install_plugins
-      yes | copy_dotfiles
+      install_dotfiles
       chsh -s /usr/bin/zsh alexander
+      echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} All done"
       ;;
     d)
-      copy_dotfiles
+      install_dotfiles
+      echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} All done"
+      ;;
+    *)
+      echo -e "${LIGHT_RED}[ERROR]${NO_COLOR} Illegal option found!"
+      exit 1
       ;;
   esac
 done
-
-if [ $OPTIND -eq 1 ]; then 
-  copy_dotfiles 
-fi
