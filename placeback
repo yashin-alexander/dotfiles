@@ -5,12 +5,17 @@ ADDITIONAL_FILES_DIR=(additional)
 LIGHT_GREEN="\033[1;32m"
 LIGHT_RED="\033[1;31m"
 NO_COLOR="\033[0m"
+ZSH_AUTOSUGGESTIONS_PATH="~/.zsh/zsh-autosuggestions"
+
 
 function install_plugins {
-  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+  if [[ ! -d ${ZSH_AUTOSUGGESTIONS_PATH} ]]; then
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_AUTOSUGGESTIONS_PATH}
+  fi
   bash -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
   echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} plugins intalled"
 }
+
 
 function install_dotfiles {
   read -p "You are going to overwrite existing dotfiles, are you sure? y/n: " answer
@@ -35,6 +40,18 @@ function install_dotfiles {
   esac
 }
 
+
+function setup_default_shell {
+  read -p "You are going to change corrent shell to zsh, are you sure? y/n: " answer
+  case $answer in
+  y)
+    chsh -s /usr/bin/zsh alexander
+  ;;
+  n) ;;
+  esac
+}
+
+
 if [ -z $* ]
   then
     echo -e "${LIGHT_RED}[ERROR]${NO_COLOR} No options found!"
@@ -46,7 +63,7 @@ while getopts "id" flag; do
     i)
       install_plugins
       install_dotfiles
-      chsh -s /usr/bin/zsh alexander
+      setup_default_shell
       echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} All done"
       ;;
     d)
