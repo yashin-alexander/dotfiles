@@ -1,0 +1,23 @@
+"*":
+  "atom-text-editor":
+    "vim-mode-plus":
+      "insert-mode":
+        "ctrl-c": "core:copy"
+  core:
+    telemetryConsent: "no"
+    themes: [
+      "atom-dark-ui"
+      "atom-dark-syntax"
+    ]
+  editor: {}
+  "exception-reporting":
+    userId: "53b4b123-d69a-4f02-9d1f-26c39ce01ba1"
+  "python-yapf":
+    formatOnSave: true
+    yapfStyle: "{based_on_style: chromium, indent_width: 4, COLUMN_LIMIT: 120}"
+  "vim-mode-plus":
+    "insert-mode":
+      "ctrl-c": "unset!"
+    useClipboardAsDefaultRegister: false
+  welcome:
+    showOnStartup: false
