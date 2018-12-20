@@ -10,5 +10,6 @@ cp ~/.pylintrc python/
 cp ~/.config/flake8 python/.config/
 cp ~/.dosbox.conf additional
 cp ~/.config/alacritty/alacritty.yml additional/.config/.alacritty.yml
+cp ~/.atom/config.cson atom/.atom/
 
 git add *
