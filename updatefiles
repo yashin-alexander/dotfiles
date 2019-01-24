@@ -1,15 +1,16 @@
 cp ~/.gitconfig git/
 cp ~/.gitignore git/
+cp -r ~/.git-templates git/
 cp ~/.tmux.conf tmux/
 cp ~/.zshrc zsh/
 cp ~/.oh-my-zsh/themes/alanpeabody-modified.zsh-theme zsh/.oh-my-zsh/themes/
 cp ~/.vimrc vim/
 cp ~/.ssh/config ssh/.ssh/
 cp ~/.pythonrc python/
-cp ~/.pylintrc python/
-cp ~/.config/flake8 python/.config/
-cp ~/.dosbox.conf additional
-cp ~/.config/alacritty/alacritty.yml additional/.config/.alacritty.yml
+cp ~/.pylintrc python/ 2>/dev/null
+cp ~/.config/flake8 python/.config/ 2>/dev/null
+cp ~/.dosbox.conf additional 2>/dev/null
+cp ~/.config/alacritty/alacritty.yml additional/.config/.alacritty.yml 2>/dev/null
 cp ~/.atom/config.cson atom/.atom/
 
 git add *
