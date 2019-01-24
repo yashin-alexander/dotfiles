@@ -12,3 +12,10 @@
 	excludesfile = /home/alexander/.gitignore
 [push]
 	default = matching
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[init]
+	templatedir = ~/.git-templates
