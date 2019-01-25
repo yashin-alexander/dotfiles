@@ -5,7 +5,8 @@ ADDITIONAL_FILES_DIR=(additional)
 LIGHT_GREEN="\033[1;32m"
 LIGHT_RED="\033[1;31m"
 NO_COLOR="\033[0m"
-ZSH_AUTOSUGGESTIONS_PATH="~/.zsh/zsh-autosuggestions"
+ZSH_AUTOSUGGESTIONS_PATH="${HOME}/.zsh/zsh-autosuggestions"
+VIM_PLUGINS_PATH="${HOME}/.vim"
 
 
 function install_plugins {
@@ -13,6 +14,11 @@ function install_plugins {
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_AUTOSUGGESTIONS_PATH}
   fi
   bash -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+
+  if [[ ! -d ${VIM_PLUGINS_PATH} ]]; then
+    git clone git@github.com:kergoth/vim-bitbake.git ${VIM_PLUGINS_PATH}
+  fi
+
   echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} plugins intalled"
 }
 
