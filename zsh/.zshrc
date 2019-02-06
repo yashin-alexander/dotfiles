@@ -54,7 +54,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Color to use when highlighting suggestion
 # More info: http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Zle-Widgets
@@ -135,22 +135,3 @@ alias tmux4='tmux new-session -c "$PWD"\; \
     resize-pane -D 17 \;'
 
 alias se='history | grep -v se | grep $1'
-
-alias st1="watch sudo ifconfig enp0s20u1c2 192.168.2.2"
-alias st2="watch sudo ifconfig enp0s29u1u2c2 192.168.2.2"
-alias st6="watch sudo ifconfig enp0s20u6c2 192.168.2.2"
-
-alias python='python3'
-
-# uncomment that line to use cx_Oracle
-#export LD_LIBRARY_PATH=/usr/lib/oracle/12.2/client64/lib:$LD_LIBRARY_PATH
-
-#export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
-#export ORACLE_SID=XE
-#export NLS_LANG=`$ORACLE_HOME/bin/nls_lang.sh`
-#export ORACLE_BASE=/u01/app/oracle
-#export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
-#export PATH=$ORACLE_HOME/bin:$PATH
-
-# dosbox startup
-alias dosbox='dosbox -conf /home/alexander/.dosbox.conf'
