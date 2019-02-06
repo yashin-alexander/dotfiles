@@ -9,7 +9,7 @@
 	st = status 
 [core]
 	editor = vim
-	excludesfile = /home/alexander/.gitignore
+	excludesfile = ~/.gitignore
 [push]
 	default = matching
 [filter "lfs"]
