@@ -51,7 +51,7 @@ function setup_default_shell {
   read -p "You are going to change corrent shell to zsh, are you sure? y/n: " answer
   case $answer in
   y)
-    chsh -s /usr/bin/zsh alexander
+    chsh -s /usr/bin/zsh $USER
   ;;
   n) ;;
   esac
