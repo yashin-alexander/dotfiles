@@ -4,6 +4,7 @@ colorscheme torte
 " pastemode settings 
 set nopaste
 set relativenumber
+set number
 set hlsearch
 set pastetoggle=<F2>
 
@@ -19,6 +20,8 @@ set autoindent
 set cursorline      " Adds cursor line highlighting 
 set cursorcolumn    " Adds cursor column highlighting 
 hi CursorLine term=bold cterm=bold     " cursor line bolding
+highlight CursorColumn ctermbg=234
+highlight CursorLine ctermbg=234
 
 " functions
 fun! SudoWrite()
@@ -31,4 +34,3 @@ endfun
 nnoremap H :set cursorline! cursorcolumn!<CR>
 " Force saving files that require root permission 
 cnoremap sw :call SudoWrite()<CR>
-
