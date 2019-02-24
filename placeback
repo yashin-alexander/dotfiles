@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-DOTFILES_DIRS=(python tmux git vim zsh ssh atom)
+DOTFILES_DIRS=(python tmux git vim zsh ssh atom nvim)
 ADDITIONAL_FILES_DIR=(additional)
 LIGHT_GREEN="\033[1;32m"
 LIGHT_RED="\033[1;31m"
