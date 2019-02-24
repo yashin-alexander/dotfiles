@@ -12,3 +12,4 @@ cp ~/.config/flake8 python/.config/ 2>/dev/null
 cp ~/.dosbox.conf additional 2>/dev/null
 cp ~/.config/alacritty/alacritty.yml additional/.config/.alacritty.yml 2>/dev/null
 cp ~/.atom/config.cson atom/.atom/
+cp ~/.config/nvim/init.vim nvim/.config/nvim 2>/dev/null
