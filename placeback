@@ -2,11 +2,65 @@
 
 DOTFILES_DIRS=(python tmux git vim zsh ssh atom nvim)
 ADDITIONAL_FILES_DIR=(additional)
+PACKAGES_FILE="packages"
 LIGHT_GREEN="\033[1;32m"
 LIGHT_RED="\033[1;31m"
 NO_COLOR="\033[0m"
 ZSH_AUTOSUGGESTIONS_PATH="${HOME}/.zsh/zsh-autosuggestions"
 VIM_PLUGINS_PATH="${HOME}/.vim"
+
+
+function store_sudo_password {
+  for ((attempts = 0; attempts < 3; attempts++)); do
+    IFS= read -srp "${USER} password: " SUDO_PASSWORD
+    sudo -k
+    if sudo -lS &> /dev/null << EOF
+${SUDO_PASSWORD}
+EOF
+    then
+      return
+    else
+      echo -e "\nPermission denied, please try again."
+    fi
+  done
+  echo -e "${LIGHT_RED}[ERROR]${NO_COLOR} Permission denied"
+  exit 1
+}
+
+
+function store_option {
+  local promt="$@"
+  read -p "${promt}" answer
+  case ${answer} in
+  y)
+    echo "True"
+  ;;
+  esac
+}
+
+
+function store_installation_options {
+  INSTALL_PACKAGES=$(store_option "Are you going to install base .deb packages? y/n: ")
+  INSTALL_PLUGINS=$(store_option "Are you going to install zsh and vim plugins? y/n: ")
+  INSTALL_DOTFILES=$(store_option "Are you going to overwrite existing dotfiles? y/n: ")
+  INSTALL_ADDITIONAL_DOTFILES=$(store_option "Are you going to overwrite additional dotfiles? y/n: ")
+  CHANGE_SHELL=$(store_option "Are you going change corrent shell to zsh y/n: ")
+}
+
+
+function install_packages {
+  local packages="$(cat ${PACKAGES_FILE})"
+  set +e
+  for package in ${packages}; do
+    echo ${SUDO_PASSWORD} | sudo apt-get install -y ${package}
+    if [ $? -ne 0 ]; then
+      echo -e "${LIGHT_RED}[FAILURE]${NO_COLOR} ${package} package installation failed"
+    else
+      echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} \"${package}\" package is installed"
+    fi
+  done
+  set -e
+}
 
 
 function install_plugins {
@@ -24,37 +78,24 @@ function install_plugins {
 
 
 function install_dotfiles {
-  read -p "You are going to overwrite existing dotfiles, are you sure? y/n: " answer
-  case $answer in
-  y)
-    for directory in ${DOTFILES_DIRS[*]}; do
-      cp -r ${directory}/.[^.]* ~/
-      echo "Dotfiles from ${directory} are copied "
-    done
-    echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} Regular files overwritten"
-  ;;
-  n) ;;
-  esac
-  read -p "Do you want to overwrite additional dotfiles? y/n: " answer
-  case $answer in
-  y)
-    cp -r ${ADDITIONAL_FILES_DIR}/.[^.]* ~/
-    echo "Dotfiles from ${ADDITIONAL_FILES_DIR} are copied "
-    echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} Additional files overwritten"
-  ;;
-  n) ;;
-  esac
+  for directory in ${DOTFILES_DIRS[*]}; do
+    cp -r ${directory}/.[^.]* ~/
+    echo "Dotfiles from ${directory} are copied "
+  done
+  echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} Regular files overwritten"
+}
+
+
+function install_additional_dotfiles {
+  cp -r ${ADDITIONAL_FILES_DIR}/.[^.]* ~/
+  echo "Dotfiles from ${ADDITIONAL_FILES_DIR} are copied "
+  echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} Additional files overwritten"
 }
 
 
 function setup_default_shell {
-  read -p "You are going to change corrent shell to zsh, are you sure? y/n: " answer
-  case $answer in
-  y)
-    chsh -s /usr/bin/zsh $USER
-  ;;
-  n) ;;
-  esac
+  echo ${SUDO_PASSWORD} | sudo chsh -s /usr/bin/zsh ${USER}
+  echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} default shell is changed"
 }
 
 
@@ -64,16 +105,36 @@ if [ -z $* ]
     exit 1
 fi
 
-while getopts "id" flag; do
-  case $flag in
+while getopts "ia" flag; do
+  case ${flag} in
     i)
+      store_installation_options
+      if [[ -n ${INSTALL_PACKAGES}  ||  -n ${CHANGE_SHELL} ]]; then
+        store_sudo_password
+      fi
+      if [[ -n ${INSTALL_PACKAGES} ]]; then
+        install_packages
+      fi
+      if [[ -n ${INSTALL_PLUGINS} ]]; then
+        install_plugins
+      fi
+      if [[ -n ${INSTALL_DOTFILES} ]]; then
+        install_dotfiles
+      fi
+      if [[ -n ${INSTALL_ADDITIONAL_DOTFILES} ]]; then
+        install_additional_dotfiles
+      fi
+      if [[ -n ${CHANGE_SHELL} ]]; then
+        setup_default_shell
+      fi
+      echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} All done"
+      ;;
+    a)
+      store_sudo_password
+      install_packages
       install_plugins
       install_dotfiles
       setup_default_shell
-      echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} All done"
-      ;;
-    d)
-      install_dotfiles
       echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} All done"
       ;;
     *)
