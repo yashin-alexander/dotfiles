@@ -1,6 +1,6 @@
 [user]
 	email = alexandr.yashin@emlid.com
-	name = yashin-alexander
+	name = Alexander Yashin
 [alias]
 	lg = log --pretty=format:'%C(bold blue)%h%Creset - %s %Cgreen(%cr)%Creset %C(bold blue)%aE%Creset'
 	co = checkout
