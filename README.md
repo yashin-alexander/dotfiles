@@ -9,14 +9,13 @@
 ## Usage
 To install basic `.deb` packages, zsh and vim plugins, dotfiles and set up `zsh` as default shell, use:
 ```
-./placeback -a
+./install -a
 ```
 If you only need to install only some of this, use:
 ```
-./placeback -i
+./install -i
 ```
-
-To update dotfiles with files from your machine use:
+If you only need to install only dotfiles, use:
 ```
-  ./updatefiles
+./install -d
 ```
