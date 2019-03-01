@@ -10,6 +10,15 @@ ZSH_AUTOSUGGESTIONS_PATH="${HOME}/.zsh/zsh-autosuggestions"
 VIM_PLUGINS_PATH="${HOME}/.vim"
 
 
+function pushd () {
+        command pushd "$@" > /dev/null
+}
+
+function popd () {
+        command popd "$@" > /dev/null
+}
+
+
 function store_sudo_password {
   for ((attempts = 0; attempts < 3; attempts++)); do
     IFS= read -srp "${USER} password: " SUDO_PASSWORD
@@ -77,19 +86,32 @@ function install_plugins {
 }
 
 
-function install_dotfiles {
-  for directory in ${DOTFILES_DIRS[*]}; do
-    cp -r ${directory}/.[^.]* ~/
-    echo "Dotfiles from ${directory} are copied "
+function perform_dotfiles_installation {
+  dotfiles_dirs=$1
+  # create dotfile's destination directories
+  destinations=$(find ${dotfiles_dirs[*]} -type d -follow -print)
+  for destination in ${destinations}; do
+    mkdir -p ~/${destination}
   done
-  echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} Regular files overwritten"
+  # symlink dotfiles
+  for dotfiles_directory in ${dotfiles_dirs[*]}; do
+    pushd ${dotfiles_directory}
+    dotfiles=$(find -follow -type f)
+    for dotfile in ${dotfiles}; do
+      ln -fs ${PWD}/${dotfile} ~/${dotfile}
+    done
+    popd
+  done
 }
 
+function install_dotfiles {
+  perform_dotfiles_installation ${DOTFILES_DIRS}
+  echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} Regular dotfiles installed"
+}
 
 function install_additional_dotfiles {
-  cp -r ${ADDITIONAL_FILES_DIR}/.[^.]* ~/
-  echo "Dotfiles from ${ADDITIONAL_FILES_DIR} are copied "
-  echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} Additional files overwritten"
+  perform_dotfiles_installation ${ADDITIONAL_FILES_DIR}
+  echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} Additional dotfiles installed"
 }
 
 
@@ -105,7 +127,7 @@ if [ -z $* ]
     exit 1
 fi
 
-while getopts "ia" flag; do
+while getopts "iad" flag; do
   case ${flag} in
     i)
       store_installation_options
@@ -135,6 +157,10 @@ while getopts "ia" flag; do
       install_plugins
       install_dotfiles
       setup_default_shell
+      echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} All done"
+      ;;
+    d)
+      install_dotfiles
       echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} All done"
       ;;
     *)
