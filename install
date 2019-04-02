@@ -6,7 +6,7 @@ PACKAGES_FILE="packages"
 LIGHT_GREEN="\033[1;32m"
 LIGHT_RED="\033[1;31m"
 NO_COLOR="\033[0m"
-ZSH_AUTOSUGGESTIONS_PATH="${HOME}/.zsh/zsh-autosuggestions"
+ZSH_AUTOSUGGESTIONS_PATH="${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
 VIM_PLUGINS_PATH="${HOME}/.vim"
 
 
