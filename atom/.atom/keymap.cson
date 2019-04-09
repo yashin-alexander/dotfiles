@@ -1,0 +1,5 @@
+'.platform-linux atom-text-editor[data-grammar~=python]:not(.mini)':
+  'ctrl-g': 'autocomplete-python:go-to-definition'
+
+'.platform-darwin, .platform-win32, .platform-linux':
+  'ctrl-g': 'unset!'
