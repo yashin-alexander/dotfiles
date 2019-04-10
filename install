@@ -3,6 +3,7 @@
 DOTFILES_DIRS=(python tmux git vim zsh ssh atom nvim)
 ADDITIONAL_FILES_DIR=(additional)
 PACKAGES_FILE="packages"
+APM_PACKAGES_FILE="atom/apm_packages"
 LIGHT_GREEN="\033[1;32m"
 LIGHT_RED="\033[1;31m"
 NO_COLOR="\033[0m"
@@ -50,6 +51,7 @@ function store_option {
 
 function store_installation_options {
   INSTALL_PACKAGES=$(store_option "Are you going to install base .deb packages? y/n: ")
+  INSTALL_APM_PACKAGES=$(store_option "Are you going to install apm packages? y/n: ")
   INSTALL_PLUGINS=$(store_option "Are you going to install zsh and vim plugins? y/n: ")
   INSTALL_DOTFILES=$(store_option "Are you going to overwrite existing dotfiles? y/n: ")
   INSTALL_ADDITIONAL_DOTFILES=$(store_option "Are you going to overwrite additional dotfiles? y/n: ")
@@ -69,6 +71,12 @@ function install_packages {
     fi
   done
   set -e
+}
+
+
+function install_apm_packages {
+  apm install --packages-file ${APM_PACKAGES_FILE}
+  echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} apm packages are installed"
 }
 
 
@@ -137,6 +145,9 @@ while getopts "iad" flag; do
       if [[ -n ${INSTALL_PACKAGES} ]]; then
         install_packages
       fi
+      if [[ -n ${INSTALL_APM_PACKAGES} ]]; then
+        install_apm_packages
+      fi
       if [[ -n ${INSTALL_PLUGINS} ]]; then
         install_plugins
       fi
@@ -154,6 +165,7 @@ while getopts "iad" flag; do
     a)
       store_sudo_password
       install_packages
+      install_apm_packages
       install_plugins
       install_dotfiles
       setup_default_shell
