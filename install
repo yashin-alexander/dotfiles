@@ -9,6 +9,7 @@ LIGHT_RED="\033[1;31m"
 NO_COLOR="\033[0m"
 ZSH_AUTOSUGGESTIONS_PATH="${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
 VIM_PLUGINS_PATH="${HOME}/.vim"
+VIM_VUNDLE_PATH="${VIM_PLUGINS_PATH}/bundle/Vundle.vim"
 
 
 function pushd () {
@@ -95,6 +96,11 @@ function install_plugins {
     git clone git@github.com:kergoth/vim-bitbake.git ${VIM_PLUGINS_PATH}
   fi
 
+  if [[ ! -d ${VIM_VUNDLE_PATH} ]]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git ${VIM_VUNDLE_PATH}
+  fi
+
+  vim -u ${HOME}/dotfiles/vim/.vimrc +PluginInstall +qall
   echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} plugins intalled"
 }
 
