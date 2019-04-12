@@ -75,7 +75,12 @@ function install_packages {
 
 
 function install_apm_packages {
-  apm install --packages-file ${APM_PACKAGES_FILE}
+  local packages="$(cat ${APM_PACKAGES_FILE})"
+  for package in ${packages}; do
+    if [[ ! -d "${HOME}/.atom/packages/${package}" ]]; then
+      apm install $package
+    fi
+  done
   echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} apm packages are installed"
 }
 
