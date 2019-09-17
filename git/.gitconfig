@@ -11,7 +11,7 @@
 	editor = vim
 	excludesfile = ~/.gitignore
 [push]
-	default = matching
+	default = simple
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
