@@ -106,9 +106,9 @@ function install_plugins {
 
 
 function perform_dotfiles_installation {
-  dotfiles_dirs=$1
+  dotfiles_dirs=$@
   # create dotfile's destination directories
-  destinations=$(find ${dotfiles_dirs[*]} -type d -follow -print)
+  destinations=$(find ${dotfiles_dirs[@]} -type d -follow -print)
   for destination in ${destinations}; do
     mkdir -p ~/${destination}
   done
@@ -124,12 +124,12 @@ function perform_dotfiles_installation {
 }
 
 function install_dotfiles {
-  perform_dotfiles_installation ${DOTFILES_DIRS}
+  perform_dotfiles_installation "${DOTFILES_DIRS[@]}"
   echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} Regular dotfiles installed"
 }
 
 function install_additional_dotfiles {
-  perform_dotfiles_installation ${ADDITIONAL_FILES_DIR}
+  perform_dotfiles_installation "${ADDITIONAL_FILES_DIR[@]}"
   echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} Additional dotfiles installed"
 }
 
