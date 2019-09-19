@@ -9,7 +9,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'git@github.com:scrooloose/nerdtree.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
