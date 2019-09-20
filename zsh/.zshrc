@@ -54,10 +54,15 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions vi-mode)
+plugins=(git zsh-autosuggestions vi-mode history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# If a new command line being added to the history list duplicates
+# an older one, the older command is removed from the list (even if 
+# it is not the previous event).
+setopt HIST_IGNORE_ALL_DUPS
 
 # Color to use when highlighting suggestion
 # More info: http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Zle-Widgets
