@@ -9,6 +9,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
@@ -48,6 +49,8 @@ set expandtab       " Makes tab key insert 4 spaces
 set autoindent
 set cursorline      " Adds cursor line highlighting 
 set cursorcolumn    " Adds cursor column highlighting 
+" how often to write swap file to disk, ms
+set updatetime=400
 hi CursorLine term=bold cterm=bold     " cursor line bolding
 highlight CursorColumn ctermbg=234
 highlight CursorLine ctermbg=234
