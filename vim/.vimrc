@@ -12,6 +12,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'git://github.com/rhysd/vim-grammarous.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -66,3 +67,7 @@ endfun
 nnoremap H :set cursorline! cursorcolumn!<CR>
 " Force saving files that require root permission 
 cnoremap sw :call SudoWrite()<CR>
+" Show grammarous warnings
+nmap <F5> :GrammarousCheck
+" Fix next frammarous warning automatically
+nmap <F6> <Plug>(grammarous-fixit)
