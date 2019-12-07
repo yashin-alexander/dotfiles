@@ -101,6 +101,7 @@ export PYTHONSTARTUP=~/.pythonrc
 
 HISTSIZE=999999
 HISTFILESIZE=999999
+HISTORY_IGNORE='(git push*master*|git push*dev*)'
 
 alias c='clear'
 alias p='python3'
