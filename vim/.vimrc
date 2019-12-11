@@ -13,6 +13,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'git://github.com/rhysd/vim-grammarous.git'
+Plugin 'git@github.com:embear/vim-localvimrc.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -71,3 +72,9 @@ cnoremap sw :call SudoWrite()<CR>
 nmap <F5> :GrammarousCheck
 " Fix next frammarous warning automatically
 nmap <F6> <Plug>(grammarous-fixit)
+
+" localvimrc settings
+" localvimrc whitelisted patterns
+let g:localvimrc_whitelist=['/home/.*/diploma-.*/.lvimrc',]
+" localvimrc disable sandbox mode
+let g:localvimrc_sandbox=0
