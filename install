@@ -98,11 +98,6 @@ function install_plugins {
 
 function perform_dotfiles_installation {
   dotfiles_dirs=$@
-  # create dotfile's destination directories
-  destinations=$(find ${dotfiles_dirs[@]} -type d -follow -print)
-  for destination in ${destinations}; do
-    mkdir -p ~/${destination}
-  done
   # symlink dotfiles
   for dotfiles_directory in ${dotfiles_dirs[*]}; do
     pushd ${dotfiles_directory}
