@@ -12,6 +12,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'git@github.com:kergoth/vim-bitbake.git'
 Plugin 'git://github.com/rhysd/vim-grammarous.git'
 Plugin 'git@github.com:embear/vim-localvimrc.git'
 

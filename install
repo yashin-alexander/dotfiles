@@ -8,8 +8,8 @@ LIGHT_RED="\033[1;31m"
 NO_COLOR="\033[0m"
 OH_MY_ZSH_PATH="${HOME}/.oh-my-zsh"
 ZSH_AUTOSUGGESTIONS_PATH="${OH_MY_ZSH_PATH}/custom/plugins/zsh-autosuggestions"
-VIM_PLUGINS_PATH="${HOME}/.vim"
-VIM_VUNDLE_PATH="${VIM_PLUGINS_PATH}/bundle/Vundle.vim"
+VIM_BASE_PATH="${HOME}/.vim/"
+VIM_VUNDLE_PATH="${VIM_BASE_PATH}/bundle/Vundle.vim"
 
 
 function pushd () {
@@ -81,10 +81,6 @@ function install_plugins {
 
   if [[ ! -d ${ZSH_AUTOSUGGESTIONS_PATH} ]]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_AUTOSUGGESTIONS_PATH}
-  fi
-
-  if [[ ! -d ${VIM_PLUGINS_PATH} ]]; then
-    git clone git@github.com:kergoth/vim-bitbake.git ${VIM_PLUGINS_PATH}
   fi
 
   if [[ ! -d ${VIM_VUNDLE_PATH} ]]; then
