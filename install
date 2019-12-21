@@ -6,17 +6,18 @@ PACKAGES_FILE="packages"
 LIGHT_GREEN="\033[1;32m"
 LIGHT_RED="\033[1;31m"
 NO_COLOR="\033[0m"
-ZSH_AUTOSUGGESTIONS_PATH="${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+OH_MY_ZSH_PATH="${HOME}/.oh-my-zsh"
+ZSH_AUTOSUGGESTIONS_PATH="${OH_MY_ZSH_PATH}/custom/plugins/zsh-autosuggestions"
 VIM_PLUGINS_PATH="${HOME}/.vim"
 VIM_VUNDLE_PATH="${VIM_PLUGINS_PATH}/bundle/Vundle.vim"
 
 
 function pushd () {
-        command pushd "$@" > /dev/null
+  command pushd "$@" > /dev/null
 }
 
 function popd () {
-        command popd "$@" > /dev/null
+  command popd "$@" > /dev/null
 }
 
 
@@ -74,10 +75,13 @@ function install_packages {
 
 
 function install_plugins {
+  if [[ ! -d ${OH_MY_ZSH_PATH} ]]; then
+    bash -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -) --unattended"
+  fi
+
   if [[ ! -d ${ZSH_AUTOSUGGESTIONS_PATH} ]]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_AUTOSUGGESTIONS_PATH}
   fi
-  bash -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
   if [[ ! -d ${VIM_PLUGINS_PATH} ]]; then
     git clone git@github.com:kergoth/vim-bitbake.git ${VIM_PLUGINS_PATH}
