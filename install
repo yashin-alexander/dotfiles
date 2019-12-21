@@ -95,15 +95,17 @@ function install_plugins {
   echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} plugins intalled"
 }
 
-
 function perform_dotfiles_installation {
   dotfiles_dirs=$@
-  # symlink dotfiles
   for dotfiles_directory in ${dotfiles_dirs[*]}; do
     pushd ${dotfiles_directory}
-    dotfiles=$(find -follow -type f)
+    dotfiles=$(find -follow -type f -printf '%P\n')
     for dotfile in ${dotfiles}; do
-      ln -fs ${PWD}/${dotfile} ~/${dotfile}
+      dotfile_path=$(dirname ${dotfile})
+      dotfile_abspath=${HOME}/${dotfile_path}
+      mkdir -p ${dotfile_abspath}
+      ln -fs ${PWD}/${dotfile} ${HOME}/${dotfile}
+      echo Created symlink "\"${HOME}/${dotfile}\""
     done
     popd
   done
