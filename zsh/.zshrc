@@ -57,7 +57,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git zsh-autosuggestions vi-mode history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # If a new command line being added to the history list duplicates
 # an older one, the older command is removed from the list (even if 
