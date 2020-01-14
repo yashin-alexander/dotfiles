@@ -182,6 +182,7 @@ bindsym $mod+q exec qtcreator
 bindsym $mod+t exec Telegram
 bindsym $mod+y exec slack
 
+bindsym $mod+x exec "xrandr --output HDMI1 --auto --above eDP1"
 
 # in case of layout change event - send signal to i3blocks
 bindsym $mod+space exec "xkblayout-state set +1; pkill -SIGRTMIN+11 i3blocks"
@@ -200,4 +201,7 @@ bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle ; pkill -SIGRTMIN+10 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+
+# Select screenshot area and put picture into clipboard
+bindsym --release $mod+o exec "scrot ${HOME}/Pictures/$(date --iso-8601='seconds').png -s -e 'xclip -selection c -t image/png < $f'"
 
