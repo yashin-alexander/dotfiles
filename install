@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-DOTFILES_DIRS=(python tmux git vim zsh ssh i3)
+DOTFILES_DIRS=(python tmux git vim zsh ssh i3 subversion)
 ADDITIONAL_FILES_DIR=(additional)
 PACKAGES_FILE="packages"
 LIGHT_GREEN="\033[1;32m"
