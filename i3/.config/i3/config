@@ -172,6 +172,18 @@ bar {
 
 # user-defined settings
 
+# hide borders on workspaces
+hide_edge_borders both
+
+# colors                border  backgr. text    indicator child_border
+client.focused          #4c7899 #008080 #ffffff #2e9ef4   #008080
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+client.background       #ffffff
+
+
 # setup screen lock
 bindsym $mod+p exec --no-startup-id i3lock --color 123456 --show-failed-attempts --ignore-empty-password
 
@@ -191,7 +203,7 @@ bindsym $mod+space exec "xkblayout-state set +1; pkill -SIGRTMIN+11 i3blocks"
 # locales
 exec "setxkbmap -model pc104 -layout us,ru -option grp:alt_shift_toggle"
 exec "setxkbmap -model pc104 -layout us,ru -option grp:win_space_toggle"
-exec "nm-applet"
+#exec "nm-applet"
 
 exec --no-startup-id clipit
 
