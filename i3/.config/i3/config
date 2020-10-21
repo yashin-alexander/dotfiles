@@ -199,6 +199,7 @@ bindsym $mod+p exec --no-startup-id i3lock --color 123456 --show-failed-attempts
 # setup binds for apps
 bindsym $mod+g exec google-chrome
 bindsym $mod+c exec charm
+bindsym $mod+i exec clion
 bindsym $mod+q exec qtcreator
 bindsym $mod+t exec Telegram
 bindsym $mod+y exec slack
