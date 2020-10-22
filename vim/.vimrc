@@ -79,3 +79,5 @@ nmap <F6> <Plug>(grammarous-fixit)
 let g:localvimrc_whitelist=['/home/.*/diploma-.*/.lvimrc',]
 " localvimrc disable sandbox mode
 let g:localvimrc_sandbox=0
+
+syntax on
