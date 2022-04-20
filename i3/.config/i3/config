@@ -30,7 +30,7 @@ font pango:monospace 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -197,23 +197,22 @@ client.background       #ffffff
 bindsym $mod+p exec --no-startup-id i3lock --color 123456 --show-failed-attempts --ignore-empty-password
 
 # setup binds for apps
-bindsym $mod+g exec google-chrome
+bindsym $mod+g exec google-chrome-stable
 bindsym $mod+c exec charm
 bindsym $mod+i exec clion
-bindsym $mod+q exec qtcreator
 bindsym $mod+t exec Telegram
 bindsym $mod+y exec slack
 bindsym $mod+n exec nautilus
-bindsym $mod+b exec "snap run foliate"
-bindsym $mod+x exec "xrandr --output HDMI1 --auto --above eDP1"
+bindsym $mod+x exec "xrandr --output HDMI-1 --primary --auto --above eDP-1"
 
 # in case of layout change event - send signal to i3blocks
 bindsym $mod+space exec "xkblayout-state set +1; pkill -SIGRTMIN+11 i3blocks"
 
 # locales
-exec "setxkbmap -model pc104 -layout us,ru -option grp:alt_shift_toggle"
-exec "setxkbmap -model pc104 -layout us,ru -option grp:win_space_toggle"
-#exec "nm-applet"
+#exec "setxkbmap -model pc104 -layout us,ru -option grp:alt_shift_toggle"
+#exec "setxkbmap -model pc104 -layout us,ru -option grp:win_space_toggle"
+exec "nm-applet"
+#exec "xrandr --output HDMI-1 --primary --auto --above eDP-1"
 
 exec --no-startup-id clipit
 
