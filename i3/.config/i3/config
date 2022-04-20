@@ -199,13 +199,19 @@ bindsym $mod+p exec --no-startup-id i3lock --color 123456 --show-failed-attempts
 # setup binds for apps
 bindsym $mod+g exec google-chrome
 bindsym $mod+c exec charm
-bindsym $mod+i exec clion
-bindsym $mod+q exec qtcreator
+bindsym $mod+i exec /home/alexander/Downloads/CLion-2021.3.3/clion-2021.3.3/bin/clion.sh
+bindsym $mod+z exec discord
 bindsym $mod+t exec Telegram
 bindsym $mod+y exec slack
 bindsym $mod+n exec nautilus
 bindsym $mod+b exec "snap run foliate"
-bindsym $mod+x exec "xrandr --output HDMI1 --auto --above eDP1"
+bindsym $mod+x exec "xrandr --output HDMI1 --off ;\
+                     hdmi_connected=`xrandr --listmonitors | grep HDMI` ;\
+                     if [ ! -z $hdmi_conneced]; then ;\
+                         xrandr --output HDMI1 --auto --above eDP1 ;\
+                         sleep(1) ;\
+                     fi"
+#                         i3-msg '[workspace=\"2\"]' move workspace to output HDMI1 ;\
 
 # in case of layout change event - send signal to i3blocks
 bindsym $mod+space exec "xkblayout-state set +1; pkill -SIGRTMIN+11 i3blocks"
@@ -213,9 +219,9 @@ bindsym $mod+space exec "xkblayout-state set +1; pkill -SIGRTMIN+11 i3blocks"
 # locales
 exec "setxkbmap -model pc104 -layout us,ru -option grp:alt_shift_toggle"
 exec "setxkbmap -model pc104 -layout us,ru -option grp:win_space_toggle"
-#exec "nm-applet"
 
 exec --no-startup-id clipit
+exec_always "nm-applet"
 
 # Audio controls
 bindsym XF86AudioRaiseVolume exec "amixer set Master -q 10%+ unmute ; pkill -SIGRTMIN+10 i3blocks"
@@ -229,3 +235,4 @@ bindsym XF86MonBrightnessDown exec "xbacklight -dec 20; if [ $(xbacklight -get) 
 # Select screenshot area and put picture into clipboard
 bindsym --release $mod+o exec "scrot ${HOME}/Pictures/$(date --iso-8601='seconds').png -s -e 'xclip -selection c -t image/png < $f'"
 
+# For mouse\touchpad settings set up /usr/share/X11/xorg.conf.d/40-libinput.conf
