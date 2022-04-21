@@ -87,6 +87,7 @@ fi
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
+alias ssh='env TERM=xterm-256color ssh'
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
