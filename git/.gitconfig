@@ -19,3 +19,4 @@
 	smudge = git-lfs smudge -- %f
 [init]
 	templatedir = ~/.git-templates
+	defaultBranch = master
