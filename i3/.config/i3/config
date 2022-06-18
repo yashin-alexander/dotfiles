@@ -226,5 +226,5 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 20; if [ $(xbacklight -get) = '0.000000' ]; then xbacklight -set 1; fi"
 
 # Select screenshot area and put picture into clipboard
-bindsym --release $mod+o exec "scrot ${HOME}/Pictures/$(date --iso-8601='seconds').png -s -e 'xclip -selection c -t image/png < $f'"
+bindsym --release $mod+o exec "flameshot gui -c -p ${HOME}/Pictures"
 
