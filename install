@@ -70,6 +70,7 @@ function install_packages {
       echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} \"${package}\" package is installed"
     fi
   done
+  echo ${SUDO_PASSWORD} | sudo cargo install alacritty
   set -e
 }
 
