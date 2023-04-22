@@ -81,3 +81,5 @@ let g:localvimrc_whitelist=['/home/.*/diploma-.*/.lvimrc',]
 let g:localvimrc_sandbox=0
 
 syntax on
+set visualbell
+set noerrorbells
