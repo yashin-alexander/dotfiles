@@ -1,7 +1,6 @@
-#!/bin/bash -e
+#!/bin/bash 
 
-DOTFILES_DIRS=(python tmux git vim zsh ssh i3 subversion)
-ADDITIONAL_FILES_DIR=(additional)
+DOTFILES_DIRS=(python tmux git vim zsh ssh i3 subversion alacritty)
 PACKAGES_FILE="packages"
 LIGHT_GREEN="\033[1;32m"
 LIGHT_RED="\033[1;31m"
@@ -54,7 +53,6 @@ function store_installation_options {
   INSTALL_PACKAGES=$(store_option "Are you going to install base .deb packages? y/n: ")
   INSTALL_PLUGINS=$(store_option "Are you going to install zsh and vim plugins? y/n: ")
   INSTALL_DOTFILES=$(store_option "Are you going to overwrite existing dotfiles? y/n: ")
-  INSTALL_ADDITIONAL_DOTFILES=$(store_option "Are you going to overwrite additional dotfiles? y/n: ")
   CHANGE_SHELL=$(store_option "Are you going change corrent shell to zsh y/n: ")
 }
 
@@ -113,48 +111,36 @@ function install_dotfiles {
   echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} Regular dotfiles installed"
 }
 
-function install_additional_dotfiles {
-  perform_dotfiles_installation "${ADDITIONAL_FILES_DIR[@]}"
-  echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} Additional dotfiles installed"
-}
-
-
 function setup_default_shell {
   echo ${SUDO_PASSWORD} | sudo chsh -s /usr/bin/zsh ${USER}
   echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} default shell is changed"
 }
 
+function setup_chosen {
+  if [[ -n ${INSTALL_PACKAGES}  ||  -n ${CHANGE_SHELL} ]]; then
+    store_sudo_password
+  fi
+  if [[ -n ${INSTALL_PACKAGES} ]]; then
+    install_packages
+  fi
+  if [[ -n ${INSTALL_PLUGINS} ]]; then
+    install_plugins
+  fi
+  if [[ -n ${INSTALL_DOTFILES} ]]; then
+    install_dotfiles
+  fi
+  if [[ -n ${CHANGE_SHELL} ]]; then
+    setup_default_shell
+  fi
+}
 
-if [ -z $* ]
-  then
-    echo -e "${LIGHT_RED}[ERROR]${NO_COLOR} No options found!"
-    exit 1
+
+if [ -z $* ]; then
+  echo -e "${LIGHT_GREEN}[INFO]${NO_COLOR} No options found, proceeding with manual install..."
 fi
 
-while getopts "iad" flag; do
+while getopts "ad" flag; do
   case ${flag} in
-    i)
-      store_installation_options
-      if [[ -n ${INSTALL_PACKAGES}  ||  -n ${CHANGE_SHELL} ]]; then
-        store_sudo_password
-      fi
-      if [[ -n ${INSTALL_PACKAGES} ]]; then
-        install_packages
-      fi
-      if [[ -n ${INSTALL_PLUGINS} ]]; then
-        install_plugins
-      fi
-      if [[ -n ${INSTALL_DOTFILES} ]]; then
-        install_dotfiles
-      fi
-      if [[ -n ${INSTALL_ADDITIONAL_DOTFILES} ]]; then
-        install_additional_dotfiles
-      fi
-      if [[ -n ${CHANGE_SHELL} ]]; then
-        setup_default_shell
-      fi
-      echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} All done"
-      ;;
     a)
       store_sudo_password
       install_packages
@@ -162,10 +148,12 @@ while getopts "iad" flag; do
       install_dotfiles
       setup_default_shell
       echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} All done"
+      exit 0
       ;;
     d)
       install_dotfiles
       echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} All done"
+      exit 0
       ;;
     *)
       echo -e "${LIGHT_RED}[ERROR]${NO_COLOR} Illegal option found!"
@@ -173,3 +161,12 @@ while getopts "iad" flag; do
       ;;
   esac
 done
+
+# if no options provided
+if [[ $OPTIND -eq "1" ]]; then
+  store_installation_options
+  setup_chosen
+  echo -e "${LIGHT_GREEN}[SUCCESS]${NO_COLOR} All done"
+  exit 0
+fi
+
