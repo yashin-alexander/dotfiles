@@ -15,7 +15,8 @@ _Symlink everything in ~/_
  -a   Install basic `.deb` packages, zsh, vim plugins,
       dotfiles and set up `zsh` as default shell.
 
- -i   Manually choose installation options.
-
  -d   Only symlink dotfiles.
+
 ```
+
+`./install ` launched with no options allows to manually choose installation details.
