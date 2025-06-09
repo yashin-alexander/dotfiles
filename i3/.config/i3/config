@@ -199,7 +199,7 @@ bindsym $mod+p exec --no-startup-id i3lock --color 123456 --show-failed-attempts
 # setup binds for apps
 bindsym $mod+g exec google-chrome-stable
 bindsym $mod+c exec charm
-bindsym $mod+i exec qtcreator
+bindsym $mod+i exec clion
 bindsym $mod+t exec Telegram
 bindsym $mod+y exec slack
 bindsym $mod+n exec nautilus
@@ -208,11 +208,15 @@ bindsym $mod+x exec "xrandr --output HDMI-1 --primary --auto --above eDP-1"
 # in case of layout change event - send signal to i3blocks
 bindsym $mod+space exec "xkblayout-state set +1; pkill -SIGRTMIN+11 i3blocks"
 
+exec "xrandr --output DP-2.3 --primary --auto --output DP-2.1 --auto --right-of DP-2.3 --output DP-4 --auto --left-of DP-2.3"
+workspace "1" output DP-2.3
+workspace "2" output DP-2.1
+workspace "3" output DP-4
+
 # locales
-#exec "setxkbmap -model pc104 -layout us,ru -option grp:alt_shift_toggle"
-#exec "setxkbmap -model pc104 -layout us,ru -option grp:win_space_toggle"
+exec "setxkbmap us,ru -option grp:alt_shift_toggle"
+exec "setxkbmap us,ru -option grp:win_space_toggle"
 exec "nm-applet"
-#exec "xrandr --output HDMI-1 --primary --auto --above eDP-1"
 
 exec --no-startup-id clipit
 
